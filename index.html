@@ -1,308 +1,387 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BPR Admin Support — автоматизація освітніх процесів</title>
-  <style>
-    :root {
-      --bg: #f8fafc;
-      --text: #0b1020;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --blue: #3b82f6;
-      --card: #ffffff;
-      --soft: #eff6ff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    .container {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(248,250,252,.88);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--line);
-      z-index: 10;
-    }
-    .nav {
-      height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      font-size: 22px;
-    }
-    .menu {
-      display: flex;
-      gap: 24px;
-      color: var(--muted);
-      font-size: 15px;
-    }
-    .btn {
-      display: inline-block;
-      background: var(--blue);
-      color: white;
-      padding: 13px 20px;
-      border-radius: 12px;
-      font-weight: 700;
-      box-shadow: 0 10px 24px rgba(59,130,246,.22);
-    }
-    .btn.secondary {
-      background: white;
-      color: var(--text);
-      border: 1px solid var(--line);
-      box-shadow: none;
-    }
-    .hero {
-      padding: 88px 0 56px;
-      display: grid;
-      grid-template-columns: 1.1fr .9fr;
-      gap: 44px;
-      align-items: center;
-    }
-    h1 {
-      font-size: clamp(40px, 6vw, 68px);
-      line-height: 1.02;
-      letter-spacing: -0.055em;
-      margin: 0 0 24px;
-    }
-    .accent { color: var(--blue); }
-    .lead {
-      font-size: 20px;
-      color: #475569;
-      max-width: 680px;
-      margin-bottom: 30px;
-    }
-    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
-    .mockup {
-      background: white;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 22px;
-      box-shadow: 0 20px 60px rgba(15,23,42,.09);
-    }
-    .mockup-bar {
-      height: 14px; width: 45%; border-radius: 999px; background: #cbd5e1; margin-bottom: 18px;
-    }
-    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-    .cell {
-      min-height: 70px;
-      border-radius: 12px;
-      background: var(--soft);
-      border: 1px solid #dbeafe;
-      padding: 14px;
-      color: #1e3a8a;
-      font-size: 14px;
-      font-weight: 700;
-    }
-    section { padding: 58px 0; }
-    .section-title {
-      font-size: 36px;
-      line-height: 1.15;
-      letter-spacing: -0.04em;
-      margin: 0 0 14px;
-    }
-    .section-sub {
-      color: var(--muted);
-      max-width: 720px;
-      margin: 0 0 28px;
-      font-size: 18px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 24px;
-      box-shadow: 0 10px 30px rgba(15,23,42,.04);
-    }
-    .card h3 { margin: 0 0 10px; font-size: 20px; }
-    .card p { margin: 0; color: var(--muted); }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-    }
-    .step-num {
-      width: 38px; height: 38px; border-radius: 10px;
-      background: var(--soft); color: var(--blue);
-      display: flex; align-items: center; justify-content: center;
-      font-weight: 800; margin-bottom: 12px;
-    }
-    .trust {
-      background: white;
-      border-top: 1px solid var(--line);
-      border-bottom: 1px solid var(--line);
-    }
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-    .metric strong {
-      font-size: 34px;
-      color: var(--blue);
-      display: block;
-      letter-spacing: -0.04em;
-    }
-    .cta {
-      background: #0b1020;
-      color: white;
-      border-radius: 22px;
-      padding: 44px;
-      display: flex;
-      justify-content: space-between;
-      gap: 24px;
-      align-items: center;
-    }
-    .cta p { color: #cbd5e1; margin: 8px 0 0; }
-    footer {
-      padding: 32px 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    @media (max-width: 820px) {
-      .menu { display: none; }
-      .hero, .grid, .steps, .metrics { grid-template-columns: 1fr; }
-      .cta { flex-direction: column; align-items: flex-start; }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BPR Admin Support — адміністративний супровід медичних тренінгів</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFF1EC;
+    --paper-2:#E6E9E2;
+    --ink:#1F3A3A;
+    --ink-soft:#3A5555;
+    --stamp:#A6402E;
+    --stamp-soft:#c98a7c;
+    --seal:#3C6E58;
+    --text:#20241f;
+    --text-mut:#5b6660;
+    --line:#c9cfc5;
+    --radius:2px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--text);
+    font-family:'Public Sans',sans-serif;
+    line-height:1.55;
+  }
+  h1,h2,h3{
+    font-family:'Source Serif 4',serif;
+    color:var(--ink);
+    margin:0 0 .4em 0;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+    letter-spacing:.02em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(239,241,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0;}
+  .brand{font-family:'Source Serif 4',serif;font-weight:600;font-size:1.15rem;color:var(--ink);display:flex;align-items:center;gap:10px;}
+  .brand .seal-mark{width:26px;height:26px;border:1.5px solid var(--stamp);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--stamp);transform:rotate(-8deg);}
+  nav.links{display:flex;gap:28px;font-size:.9rem;}
+  nav.links a{text-decoration:none;color:var(--ink-soft);border-bottom:1px solid transparent;padding-bottom:2px;transition:.15s;}
+  nav.links a:hover{border-color:var(--stamp);color:var(--ink);}
+  .btn{
+    display:inline-block;
+    padding:11px 20px;
+    font-size:.88rem;
+    font-family:'IBM Plex Mono',monospace;
+    text-decoration:none;
+    border-radius:var(--radius);
+    border:1px solid var(--ink);
+    color:var(--paper);
+    background:var(--ink);
+    transition:.15s;
+  }
+  .btn:hover{background:var(--ink-soft);}
+  .btn.ghost{background:transparent;color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink);color:var(--paper);}
+  .btn.stamp{border-color:var(--stamp);background:var(--stamp);}
+  .btn.stamp:hover{background:#8c3325;}
+
+  /* hero */
+  .hero{padding:76px 0 60px;position:relative;overflow:hidden;}
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--seal);text-transform:uppercase;letter-spacing:.12em;margin-bottom:14px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--seal);}
+  .hero h1{font-size:clamp(1.9rem,4vw,2.7rem);max-width:820px;font-weight:600;}
+  .hero p.lead{max-width:620px;color:var(--text-mut);font-size:1.05rem;margin:16px 0 30px;}
+  .hero .ctas{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:50px;}
+
+  .stamp-graphic{
+    position:absolute;right:-40px;top:40px;
+    width:230px;height:230px;
+    border:2px solid var(--stamp);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    transform:rotate(-12deg) scale(0.9);
+    opacity:0;
+    animation:stampFall .6s cubic-bezier(.2,.9,.25,1) .3s forwards;
+  }
+  .stamp-graphic .ring{
+    position:absolute;inset:10px;border:1px solid var(--stamp);border-radius:50%;
+  }
+  .stamp-graphic .txt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.62rem;color:var(--stamp);text-align:center;line-height:1.5;
+    letter-spacing:.06em;
+  }
+  @keyframes stampFall{
+    0%{opacity:0;transform:rotate(-25deg) scale(1.6) translateY(-40px);}
+    70%{opacity:1;}
+    100%{opacity:.85;transform:rotate(-12deg) scale(1) translateY(0);}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .stamp-graphic{animation:none;opacity:.85;transform:rotate(-12deg) scale(1);}
+  }
+  @media (max-width:860px){.stamp-graphic{display:none;}}
+
+  .index-cards{display:flex;gap:14px;flex-wrap:wrap;}
+  .index-card{
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    border-left:3px solid var(--seal);
+    padding:12px 16px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.82rem;
+    color:var(--ink-soft);
+  }
+
+  section{padding:70px 0;border-bottom:1px solid var(--line);}
+  .section-head{max-width:640px;margin-bottom:44px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head p{color:var(--text-mut);}
+
+  /* services as document tabs */
+  .services-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+  .service-row{
+    display:grid;
+    grid-template-columns:56px 1fr;
+    gap:24px;
+    padding:26px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .service-row .num{font-family:'IBM Plex Mono',monospace;color:var(--stamp);font-size:.85rem;padding-top:4px;}
+  .service-row h3{font-size:1.15rem;margin-bottom:8px;}
+  .service-row p{color:var(--text-mut);margin:0 0 10px;font-size:.95rem;max-width:640px;}
+  .tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+  .tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:.72rem;
+    color:var(--ink-soft);
+    background:var(--paper-2);
+    border:1px solid var(--line);
+    padding:4px 9px;
+    border-radius:var(--radius);
+  }
+  .forms-trio{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:16px;}
+  .form-card{
+    border:1px solid var(--line);
+    background:var(--paper-2);
+    padding:16px;
+  }
+  .form-card .k{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--seal);text-transform:uppercase;letter-spacing:.06em;}
+  .form-card h4{font-family:'Source Serif 4',serif;font-size:1rem;margin:6px 0 10px;color:var(--ink);}
+  .form-card a{font-family:'IBM Plex Mono',monospace;font-size:.8rem;color:var(--stamp);text-decoration:none;}
+  .form-card a:hover{text-decoration:underline;}
+
+  /* limits / honesty box */
+  .note-box{
+    border:1px dashed var(--stamp-soft);
+    background:rgba(166,64,46,0.06);
+    padding:20px 22px;
+    margin-top:26px;
+  }
+  .note-box .k{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--stamp);text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;display:block;}
+  .note-box p{margin:0;color:var(--ink-soft);font-size:.92rem;}
+  .note-box ul{margin:10px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.92rem;}
+
+  /* process */
+  .process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border-top:1px solid var(--line);border-left:1px solid var(--line);}
+  .process-step{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 22px;}
+  .process-step .step-num{font-family:'IBM Plex Mono',monospace;color:var(--seal);font-size:.8rem;}
+  .process-step h3{font-size:1.05rem;margin:10px 0 6px;}
+  .process-step p{color:var(--text-mut);font-size:.9rem;margin:0;}
+  .prereq{
+    margin-top:24px;
+    display:flex;gap:14px;align-items:flex-start;
+    padding:18px 20px;
+    background:var(--paper-2);
+    border-left:3px solid var(--seal);
+    font-size:.92rem;
+    color:var(--ink-soft);
+  }
+  .prereq .k{font-family:'IBM Plex Mono',monospace;color:var(--seal);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;display:block;margin-bottom:6px;}
+
+  /* experience */
+  .exp{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start;}
+  @media (max-width:760px){.exp{grid-template-columns:1fr;}}
+  .exp-stats{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .stat{border-top:2px solid var(--stamp);padding-top:10px;}
+  .stat b{font-family:'Source Serif 4',serif;font-size:1.6rem;color:var(--ink);display:block;}
+  .stat span{font-size:.82rem;color:var(--text-mut);}
+
+  /* contact */
+  .contact-cta{text-align:left;padding:70px 0 90px;}
+  .contact-cta h2{font-size:clamp(1.6rem,3vw,2.1rem);max-width:640px;}
+  .contact-cta p{color:var(--text-mut);max-width:520px;margin-bottom:28px;}
+
+  footer{padding:26px 0;font-family:'IBM Plex Mono',monospace;font-size:.78rem;color:var(--text-mut);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+</style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="logo">BPR Admin Support</div>
-      <nav class="menu">
-        <a href="#services">Послуги</a>
-        <a href="#process">Процес</a>
-        <a href="#experience">Досвід</a>
-        <a href="#contact">Контакти</a>
-      </nav>
-     <a class="btn" href="https://forms.gle/E9sFZbEAGf3giZBT8" target="_blank">Зв’язатися</a>
+
+<header>
+  <div class="wrap nav">
+    <div class="brand"><span class="seal-mark">Б</span>BPR Admin Support</div>
+    <nav class="links">
+      <a href="#services">Послуги</a>
+      <a href="#process">Процес</a>
+      <a href="#experience">Досвід</a>
+      <a href="#contact">Контакти</a>
+    </nav>
+    <a class="btn" href="#contact">Обговорити задачу</a>
+  </div>
+</header>
+
+<section class="hero" style="border-bottom:1px solid var(--line);">
+  <div class="wrap">
+    <div class="eyebrow">адмін-супровід БПР-тренінгів</div>
+    <h1>Беру на себе документи, форми й сертифікати вашого медичного тренінгу — від реєстрації до видачі БПР-сертифікатів.</h1>
+    <p class="lead">Працюю з організаторами медичних навчальних заходів: готую пакет документів для реєстрації тренінгу, налаштовую форми реєстрації та тестування, супроводжую захід онлайн і оформлюю сертифікати учасникам.</p>
+    <div class="ctas">
+      <a class="btn stamp" href="#contact">Обговорити тренінг</a>
+      <a class="btn ghost" href="#services">Що входить у супровід</a>
     </div>
-  </header>
+    <div class="index-cards">
+      <div class="index-card">01 — реєстрація</div>
+      <div class="index-card">02 — документи БПР</div>
+      <div class="index-card">03 — тестування</div>
+      <div class="index-card">04 — сертифікати</div>
+    </div>
+    <div class="stamp-graphic">
+      <div class="ring"></div>
+      <div class="txt">СЕРТИФІКАТ<br>ВИДАНО<br>БПР · 2026</div>
+    </div>
+  </div>
+</section>
 
-  <main>
-    <div class="container hero">
-      <div>
-        <h1>Автоматизація освітніх процесів для <span class="accent">медичних навчальних заходів</span></h1>
-        <p class="lead">Допомагаю організаторам медичного навчання зменшити ручну роботу: Google Forms, Google Sheets, реєстри учасників, сертифікати, програми БПР та впорядкований документообіг.</p>
-        <div class="hero-actions">
-          <a class="btn" href="https://forms.gle/E9sFZbEAGf3giZBT8" target="_blank">Обговорити задачу</a>
-          <a class="btn secondary" href="#services">Подивитися послуги</a>
-        </div>
-      </div>
-      <div class="mockup" aria-label="Макет робочої системи">
-        <div class="mockup-bar"></div>
-        <div class="row">
-          <div class="cell">Реєстрація учасників</div>
-          <div class="cell">Google Forms</div>
-        </div>
-        <div class="row">
-          <div class="cell">Тести та анкети</div>
-          <div class="cell">Сертифікати</div>
-        </div>
-        <div class="cell">Таблиця для БПР-документів і звітності</div>
-      </div>
+<section id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Послуги</div>
+      <h2>Що я беру на себе в підготовці тренінгу</h2>
+      <p>Повний цикл паперової та організаційної роботи навколо навчального заходу — від першої форми реєстрації до таблиці виданих сертифікатів.</p>
     </div>
 
-    <section class="trust">
-      <div class="container metrics">
-        <div class="metric"><strong>15+</strong><span>років адміністративного та HR-досвіду</span></div>
-        <div class="metric"><strong>Google</strong><span>Forms, Sheets, Docs, Drive</span></div>
-        <div class="metric"><strong>БПР</strong><span>документи, тести, анкети, сертифікати</span></div>
-      </div>
-    </section>
+    <div class="services-list">
 
-    <section id="services">
-      <div class="container">
-        <h2 class="section-title">Що можна делегувати</h2>
-        <p class="section-sub">Послуги для навчальних центрів, громадських організацій, медичних команд та організаторів освітніх заходів.</p>
-        <div class="grid">
-          <div class="card">
-            <h3>Документи БПР</h3>
-            <p>Програми заходів, структура, тести, анкети, сертифікати та супровідні матеріали.</p>
-          </div>
-          <div class="card">
-            <h3>Google Forms / Sheets</h3>
-            <p>Форми реєстрації, вхідний/вихідний контроль, таблиці учасників, базова логіка обробки даних.</p>
-          </div>
-          <div class="card">
-            <h3>Автоматизація рутини</h3>
-            <p>Шаблони, папки, посилання, реєстри, повторювані процеси, які можна спростити.</p>
-          </div>
-          <div class="card">
-            <h3>Сертифікати</h3>
-            <p>Підготовка даних, перевірка списків, шаблони, передача готових файлів учасникам.</p>
-          </div>
-          <div class="card">
-            <h3>Організаційний супровід</h3>
-            <p>Комунікація з учасниками, тренерами, контроль дедлайнів і структури матеріалів.</p>
-          </div>
-          <div class="card">
-            <h3>Аудит процесу</h3>
-            <p>Пошук слабких місць у поточній системі та пропозиції, що можна автоматизувати першими.</p>
+      <div class="service-row">
+        <div class="num">01</div>
+        <div>
+          <h3>Форми реєстрації та тестування</h3>
+          <p>Готую три Google Forms під конкретний захід: реєстрація учасників, вхідне тестування і вихідне тестування (вихідне — обов'язкове, вхідне — за потреби).</p>
+          <div class="forms-trio">
+            <div class="form-card">
+              <span class="k">Форма 1</span>
+              <h4>Реєстрація учасників</h4>
+              <a href="https://forms.gle/E9sFZbEAGf3giZBT8" target="_blank" rel="noopener">Перейти до форми →</a>
+            </div>
+            <div class="form-card">
+              <span class="k">Форма 2</span>
+              <h4>Вхідне тестування</h4>
+              <a href="#" target="_blank" rel="noopener">Посилання додається під захід →</a>
+            </div>
+            <div class="form-card">
+              <span class="k">Форма 3</span>
+              <h4>Вихідне тестування</h4>
+              <a href="#" target="_blank" rel="noopener">Посилання додається під захід →</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <section id="process">
-      <div class="container">
-        <h2 class="section-title">Як проходить робота</h2>
-        <p class="section-sub">Простий процес без зайвої бюрократії.</p>
-        <div class="steps">
-          <div class="card"><div class="step-num">1</div><h3>Заявка</h3><p>Ви описуєте задачу, формат заходу, дедлайн і що вже є.</p></div>
-          <div class="card"><div class="step-num">2</div><h3>Уточнення</h3><p>Фіксуємо перелік документів, таблиць або автоматизацій.</p></div>
-          <div class="card"><div class="step-num">3</div><h3>Підготовка</h3><p>Створюю структуру, документи, форми, таблиці або шаблони.</p></div>
-          <div class="card"><div class="step-num">4</div><h3>Передача</h3><p>Ви отримуєте готовий пакет і коротку інструкцію з використання.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="container">
-        <h2 class="section-title">Практичний досвід в освітньому адмініструванні</h2>
-        <p class="section-sub">Я працюю з організацією освітніх медичних заходів: реєстраціями, тренерами, програмами, тестами, анкетами, сертифікатами, Google Forms, Google Sheets та реєстрами учасників. Мій фокус — впорядкувати процес так, щоб команда менше витрачала час на ручну роботу.</p>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="cta">
-          <div>
-            <h2 class="section-title" style="margin:0;">Потрібно впорядкувати БПР-документи або автоматизувати навчальний процес?</h2>
-            <p>Напишіть мені, коротко опишіть задачу — і я запропоную перший крок.</p>
+      <div class="service-row">
+        <div class="num">02</div>
+        <div>
+          <h3>Пакет документів для реєстрації тренінгу на бали БПР</h3>
+          <p>Збираю та оформлюю повний комплект, який потрібен для офіційної реєстрації заходу:</p>
+          <div class="tag-list">
+            <span class="tag">почасова програма</span>
+            <span class="tag">навчальна програма</span>
+            <span class="tag">короткий опис / назва заходу</span>
+            <span class="tag">спеціалізація заходу</span>
+            <span class="tag">резюме тренерів</span>
+            <span class="tag">дата й час початку / завершення</span>
           </div>
-          <a class="btn" href="mailto:nadiiatsykalo127@gmail.com">Написати на email</a>
         </div>
       </div>
-    </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      © 2026 BPR Admin Support · nadiiatsykalo127@gmail.com
+      <div class="service-row">
+        <div class="num">03</div>
+        <div>
+          <h3>Сертифікати учасників</h3>
+          <p>Готую сертифікати у PDF за результатами тестування. За замовчуванням — без печатки; якщо організатор надає підпис і печатку, вкладаю їх у макет.</p>
+        </div>
+      </div>
+
+      <div class="service-row">
+        <div class="num">04</div>
+        <div>
+          <h3>Онлайн-супровід заходу</h3>
+          <p>У день тренінгу: створюю групу для учасників, надсилаю програму та адресу заходу, розсилаю посилання на тестування. Після завершення — оформлюю сертифікати й веду таблицю виданих сертифікатів БПР.</p>
+        </div>
+      </div>
+
     </div>
-  </footer>
+
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Процес</div>
+      <h2>Як проходить супровід одного тренінгу</h2>
+      <p>Простий, послідовний процес — без зайвої бюрократії з мого боку.</p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3>Заявка</h3>
+        <p>Ви описуєте захід: тему, дату, спеціалізацію, тренерів і що вже готово.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3>Документи БПР</h3>
+        <p>Готую почасову й навчальну програму, опис заходу, резюме тренерів.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3>Форми</h3>
+        <p>Створюю форму реєстрації та форми вхідного / вихідного тестування.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3>Супровід у день заходу</h3>
+        <p>Група учасників, розсилка програми й адреси, посилання на тестування.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">05</div>
+        <h3>Сертифікати й звітність</h3>
+        <p>Оформлюю PDF-сертифікати за результатами тесту і заповнюю таблицю виданих сертифікатів.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap exp">
+    <div>
+      <div class="eyebrow">Досвід</div>
+      <h2>Практика в адмініструванні медичних освітніх заходів</h2>
+      <p style="color:var(--text-mut);">Працюю з реєстраціями, тренерами, програмами, тестами, анкетами й сертифікатами. Головна мета — щоб команда організатора витрачала мінімум часу на паперову роботу навколо тренінгу.</p>
+    </div>
+    <div class="exp-stats">
+      <div class="stat"><b>2</b><span>роки адмін-супроводу медичних тренінгів</span></div>
+      <div class="stat"><b>15</b><span>років HR-досвіду</span></div>
+      <div class="stat"><b>3</b><span>форми на кожен захід: реєстрація, вхід, вихід</span></div>
+      <div class="stat"><b>Google</b><span>Forms, Sheets, Docs, Drive</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="wrap contact-cta">
+    <div class="eyebrow">Контакти</div>
+    <h2>Плануєте тренінг з балами БПР? Розкажіть деталі заходу.</h2>
+    <p>Дата, спеціалізація, тренери й формат — і я запропоную перелік документів та форм, які знадобляться.</p>
+    <div class="ctas">
+      <a class="btn stamp" href="https://forms.gle/E9sFZbEAGf3giZBT8" target="_blank" rel="noopener">Заповнити форму заявки</a>
+      <a class="btn ghost" href="mailto:nadiiatsykalo127@gmail.com">Написати на email</a>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <span>© 2026 BPR Admin Support</span>
+  <span>nadiiatsykalo127@gmail.com</span>
+</footer>
+
 </body>
 </html>
